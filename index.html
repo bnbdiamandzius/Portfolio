@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roblox Developer Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #ff4d94;
+            --secondary: #3366ff;
+            --dark: #1a1a2e;
+            --darker: #16213e;
+            --light: #f0f0f0;
+            --gray: #a0a0c0;
+        }
+        
+        body {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--darker) 100%);
+            color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            padding: 2rem 0;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-shadow: 0 0 10px rgba(255, 77, 148, 0.5);
+            margin-bottom: 0.5rem;
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            color: var(--gray);
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+            background: rgba(0, 0, 0, 0.2);
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            color: var(--gray);
+        }
+        
+        .main-content {
+            padding: 3rem 0;
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--primary);
+        }
+        
+        .bio {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+        }
+        
+        .skills {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .skill-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .skill-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .skill-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .work-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        
+        .work-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 1.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+        }
+        
+        .work-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .work-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+        
+        .links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+            justify-content: center;
+        }
+        
+        .link-button {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.8rem 1.5rem;
+            background: rgba(255, 77, 148, 0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 77, 148, 0.3);
+        }
+        
+        .link-button:hover {
+            background: rgba(255, 77, 148, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 77, 148, 0.3);
+        }
+        
+        .link-button i {
+            margin-right: 0.5rem;
+        }
+        
+        .contact-section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-top: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 1rem;
+            justify-content: center;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .contact-icon {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--gray);
+        }
+        
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            overflow: hidden;
+            border: 4px solid var(--primary);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .work-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .profile-image {
+                width: 150px;
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">Roblox Developer</div>
+            <div class="tagline">Scripting • Animation • Building</div>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="container">
+            <div class="profile-image">
+                <img src="https://media.discordapp.net/attachments/827245202192203826/1441461725982621877/IMG_9855.png?ex=6921e158&is=69208fd8&hm=4b2c93e5cd5b748a7edd8abb04f7d1796c87a4720c6808f31a351ba4c95782b9&=&format=webp&quality=lossless&width=909&height=833" alt="Profile Picture">
+            </div>
+            <h1>Enthusiastic Scripter & Animator</h1>
+            <p>Ready to Bring Your Game to Life!</p>
+            <div class="links">
+                <a href="https://www.roblox.com/users/853177079/profile" class="link-button" target="_blank">
+                    <i class="fas fa-user"></i> Roblox Profile
+                </a>
+                <a href="https://create.roblox.com/talent/creators/853177079" class="link-button" target="_blank">
+                    <i class="fas fa-briefcase"></i> Talent Hub
+                </a>
+                <a href="#" class="link-button">
+                    <i class="fab fa-discord"></i> Discord: bnbdiamandlock
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <div class="container">
+        <div class="main-content">
+            <section class="bio">
+                <h2 class="section-title">About Me</h2>
+                <p>I'm a motivated Roblox developer focused on learning and growing through real projects. I have a strong interest in scripting and creating smooth character animations. I'm eager to apply my skills to help you build your vision, whether it's a complex game mechanic or a simple interactive experience.</p>
+                <br>
+                <p>I am actively looking for opportunities to gain experience and build my portfolio. I am open to free work for interesting projects, especially to help beginners, and am also available for small-payment jobs.</p>
+            </section>
+            
+            <h2 class="section-title">What I Offer</h2>
+            <div class="skills">
+                <div class="skill-card">
+                    <div class="skill-icon"><i class="fas fa-code"></i></div>
+                    <h3 class="skill-title">Scripting</h3>
+                    <p>Basic to Intermediate Scripting: I can create functional game mechanics, UI interactions, and basic systems.</p>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-icon"><i class="fas fa-cube"></i></div>
+                    <h3 class="skill-title">Building</h3>
+                    <p>Basic Building: I can create simple, efficient builds to suit your game's theme.</p>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-icon"><i class="fas fa-film"></i></div>
+                    <h3 class="skill-title">Animation</h3>
+                    <p>Animation: I create character and weapon animations to make your game feel dynamic.</p>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-icon"><i class="fas fa-users"></i></div>
+                    <h3 class="skill-title">Collaboration</h3>
+                    <p>A Collaborative Spirit: I'm a quick learner and love working with others to solve problems.</p>
+                </div>
+            </div>
+            
+            <h2 class="section-title">My Work</h2>
+            <div class="work-grid">
+                <div class="work-card">
+                    <h3 class="work-title">BoatShop</h3>
+                    <p>A fully functional boat shop system with purchasing and customization features.</p>
+                    <a href="https://medal.tv/bg/games/roblox/clips/ly0I19bHiHJO3FqV4?invite=cr-MSxMS0wsMjEyNzE2NTQ3&v=20" class="link-button" target="_blank" style="margin-top: 10px; display: inline-block;">
+                        <i class="fas fa-play-circle"></i> View Clip
+                    </a>
+                </div>
+                
+                <div class="work-card">
+                    <h3 class="work-title">Magic System</h3>
+                    <p>An intricate magic casting system with multiple spell types and visual effects.</p>
+                    <a href="https://medal.tv/bg/games/roblox/clips/lxZZPoSyR9PvwKd4R?invite=cr-MSxJdnIsMjEyNzE2NTQ3&v=30" class="link-button" target="_blank" style="margin-top: 10px; display: inline-block;">
+                        <i class="fas fa-play-circle"></i> View Clip
+                    </a>
+                </div>
+                
+                <div class="work-card">
+                    <h3 class="work-title">LightningSpear</h3>
+                    <p>A dynamic weapon with lightning effects and special attack animations.</p>
+                    <a href="https://medal.tv/bg/games/roblox-studio/clips/ly0csPLvB0n3l3zRH?invite=cr-MSw4dE8sMjEyNzE2NTQ3&v=20" class="link-button" target="_blank" style="margin-top: 10px; display: inline-block;">
+                        <i class="fas fa-play-circle"></i> View Clip
+                    </a>
+                </div>
+                
+                <div class="work-card">
+                    <h3 class="work-title">Farming System</h3>
+                    <p>A complete farming mechanic with planting, growing, and harvesting features.</p>
+                    <a href="https://medal.tv/bg/games/roblox-studio/clips/ly0aEqBOpxKkRyjhs?invite=cr-MSwybGYsMjEyNzE2NTQ3&v=30" class="link-button" target="_blank" style="margin-top: 10px; display: inline-block;">
+                        <i class="fas fa-play-circle"></i> View Clip
+                    </a>
+                </div>
+                
+                <div class="work-card">
+                    <h3 class="work-title">Fist Punch</h3>
+                    <p>Combat animations with special fist attack moves and impact effects.</p>
+                    <a href="https://medal.tv/bg/games/roblox-studio/clips/ly0wuYqBQBWS-ocNy?invite=cr-MSxGNGosMjEyNzE2NTQ3&v=20" class="link-button" target="_blank" style="margin-top: 10px; display: inline-block;">
+                        <i class="fas fa-play-circle"></i> View Clip
+                    </a>
+                </div>
+            </div>
+            
+            <section class="contact-section">
+                <h2 class="section-title">Let's Connect</h2>
+                <p>I'm always interested in new projects and collaborations. Let's create something amazing together!</p>
+                
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fab fa-discord"></i></div>
+                        <div>
+                            <h3>Discord</h3>
+                            <p>bnbdiamandlock</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-user"></i></div>
+                        <div>
+                            <h3>Roblox</h3>
+                            <p><a href="https://www.roblox.com/users/853177079/profile" target="_blank" style="color: var(--primary); text-decoration: none;">User ID: 853177079</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-briefcase"></i></div>
+                        <div>
+                            <h3>Talent Hub</h3>
+                            <p><a href="https://create.roblox.com/talent/creators/853177079" target="_blank" style="color: var(--primary); text-decoration: none;">Roblox Creator</a></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>Let's connect and create something amazing together!</p>
+            <p style="margin-top: 0.5rem;">© 2023 Roblox Developer Portfolio</p>
+        </div>
+    </footer>
+</body>
+</html>
